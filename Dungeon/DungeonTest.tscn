@@ -30,4 +30,4 @@ size = Vector3(6, 0.5, 27.665)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.9885178)
 
 [node name="World" parent="." instance=ExtResource("5_y8oqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.283909, 1.487175, 82.98627)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.283909, 0.52573776, 82.98627)
