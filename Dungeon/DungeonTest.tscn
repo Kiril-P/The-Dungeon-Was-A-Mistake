@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbp2805aenqf4"]
+
+[ext_resource type="Script" uid="uid://mruukps43xuo" path="res://addons/SimpleDungeons/DungeonGenerator3D.gd" id="1_7kxvu"]
+[ext_resource type="PackedScene" uid="uid://b3boaybsjvlyw" path="res://Dungeon/Rooms/living_room.tscn" id="2_us8i8"]
+[ext_resource type="PackedScene" uid="uid://dv8kjpsh2ovp6" path="res://Dungeon/Rooms/stair.tscn" id="3_y8oqj"]
+[ext_resource type="PackedScene" uid="uid://bq6k2v7kv4p36" path="res://Dungeon/Rooms/corridor.tscn" id="4_tflsa"]
+[ext_resource type="Script" uid="uid://cho5u58yeku82" path="res://addons/SimpleDungeons/DungeonRoom3D.gd" id="5_tflsa"]
+[ext_resource type="PackedScene" uid="uid://ca4s7pcmac7a1" path="res://World.tscn" id="5_y8oqj"]
+
+[node name="DungeonTest" type="Node3D"]
+
+[node name="DungeonGenerator3D" type="Node3D" parent="."]
+script = ExtResource("1_7kxvu")
+room_scenes = Array[PackedScene]([ExtResource("2_us8i8"), ExtResource("3_y8oqj")])
+corridor_room_scene = ExtResource("4_tflsa")
+visualize_generation_wait_between_iterations = 0
+metadata/_custom_type_script = "uid://mruukps43xuo"
+
+[node name="DungeonRoom3D" type="Node3D" parent="DungeonGenerator3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 45)
+script = ExtResource("5_tflsa")
+metadata/_custom_type_script = "uid://cho5u58yeku82"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="DungeonGenerator3D/DungeonRoom3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.75, 8.668)
+use_collision = true
+size = Vector3(6, 0.5, 27.665)
+
+[node name="DOOR" type="Node3D" parent="DungeonGenerator3D/DungeonRoom3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.9885178)
+
+[node name="World" parent="." instance=ExtResource("5_y8oqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.283909, 1.487175, 82.98627)

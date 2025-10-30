@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3boaybsjvlyw"]
+
+[ext_resource type="Script" uid="uid://cho5u58yeku82" path="res://addons/SimpleDungeons/DungeonRoom3D.gd" id="1_6bpf7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bpf7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="LivingRoom" type="Node3D"]
+script = ExtResource("1_6bpf7")
+size_in_voxels = Vector3i(2, 1, 2)
+max_count = 10
+metadata/_custom_type_script = "uid://cho5u58yeku82"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_6bpf7")
+use_collision = true
+size = Vector3(20, 10, 20)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+operation = 2
+size = Vector3(19.5, 9, 19.5)
+
+[node name="DOOR?" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 5)
+operation = 2
+size = Vector3(1, 7, 4)
+
+[node name="DOOR?5" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 10)
+operation = 2
+size = Vector3(4, 7, 1)
+
+[node name="DOOR?6" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 10)
+operation = 2
+size = Vector3(4, 7, 1)
+
+[node name="DOOR?7" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -10)
+operation = 2
+size = Vector3(4, 7, 1)
+
+[node name="DOOR?8" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, -10)
+operation = 2
+size = Vector3(4, 7, 1)
+
+[node name="DOOR?2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, -5)
+operation = 2
+size = Vector3(1, 7, 4)
+
+[node name="DOOR?3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, 5)
+operation = 2
+size = Vector3(1, 7, 4)
+
+[node name="DOOR?4" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, -5)
+operation = 2
+size = Vector3(1, 7, 4)
