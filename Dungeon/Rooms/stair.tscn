@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv8kjpsh2ovp6"]
+[gd_scene load_steps=4 format=3 uid="uid://dv8kjpsh2ovp6"]
 
 [ext_resource type="Script" uid="uid://cho5u58yeku82" path="res://addons/SimpleDungeons/DungeonRoom3D.gd" id="1_8win1"]
+[ext_resource type="PackedScene" uid="uid://m6evl16n32g8" path="res://objects/door.tscn" id="2_r75i5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8win1"]
 albedo_color = Color(0, 0, 1, 1)
@@ -21,18 +22,24 @@ size = Vector3(20, 20, 10)
 operation = 2
 size = Vector3(19, 19, 9)
 
-[node name="DOOR?_RIGHT" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -6, 0)
+[node name="DOOR?_DOWN" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -6.5, 0)
 operation = 2
-size = Vector3(1, 7, 4)
+size = Vector3(1, 6, 4)
 
-[node name="DOOR?_LEFT" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, 0)
+[node name="DOOR?_UP" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.5, 0)
 operation = 2
-size = Vector3(1, 7, 4)
+size = Vector3(1, 6, 4)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.60727)
 use_collision = true
-polygon = PackedVector2Array(0, -9.5, 9.5, 0.5, 9.5, -9.5)
+polygon = PackedVector2Array(-8, -9.5, 9.5, 0.5, 9.5, -9.5)
 depth = 9.5
+
+[node name="door down" parent="." instance=ExtResource("2_r75i5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.75, -6.5, -0.49)
+
+[node name="door up" parent="." instance=ExtResource("2_r75i5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.75, 3.5, -0.49)

@@ -28,24 +28,24 @@ operation = 2
 size = Vector3(9, 9, 9)
 
 [node name="DOOR?_FRONT" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 operation = 2
-size = Vector3(4, 7, 1)
+size = Vector3(9, 9, 1)
 
 [node name="DOOR?_BACK" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 operation = 2
-size = Vector3(4, 7, 1)
+size = Vector3(9, 9, 1)
 
 [node name="DOOR?_RIGHT" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 operation = 2
-size = Vector3(1, 7, 4)
+size = Vector3(1, 9, 9)
 
 [node name="DOOR?_LEFT" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 operation = 2
-size = Vector3(1, 7, 4)
+size = Vector3(1, 9, 9)
 
 [node name="RemoveUnusedDoors" type="Node" parent="."]
 script = SubResource("GDScript_jfi38")

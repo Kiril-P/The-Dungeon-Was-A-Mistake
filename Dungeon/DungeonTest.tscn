@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbp2805aenqf4"]
+[gd_scene load_steps=8 format=3 uid="uid://cbp2805aenqf4"]
 
 [ext_resource type="Script" uid="uid://mruukps43xuo" path="res://addons/SimpleDungeons/DungeonGenerator3D.gd" id="1_7kxvu"]
 [ext_resource type="PackedScene" uid="uid://b3boaybsjvlyw" path="res://Dungeon/Rooms/living_room.tscn" id="2_us8i8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bq6k2v7kv4p36" path="res://Dungeon/Rooms/corridor.tscn" id="4_tflsa"]
 [ext_resource type="Script" uid="uid://cho5u58yeku82" path="res://addons/SimpleDungeons/DungeonRoom3D.gd" id="5_tflsa"]
 [ext_resource type="PackedScene" uid="uid://ca4s7pcmac7a1" path="res://World.tscn" id="5_y8oqj"]
+[ext_resource type="PackedScene" uid="uid://m6evl16n32g8" path="res://objects/door.tscn" id="7_udry3"]
 
 [node name="DungeonTest" type="Node3D"]
 
@@ -13,6 +14,7 @@
 script = ExtResource("1_7kxvu")
 room_scenes = Array[PackedScene]([ExtResource("2_us8i8"), ExtResource("3_y8oqj")])
 corridor_room_scene = ExtResource("4_tflsa")
+show_debug_in_editor = false
 visualize_generation_wait_between_iterations = 0
 metadata/_custom_type_script = "uid://mruukps43xuo"
 
@@ -21,13 +23,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 45)
 script = ExtResource("5_tflsa")
 metadata/_custom_type_script = "uid://cho5u58yeku82"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="DungeonGenerator3D/DungeonRoom3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.75, 8.668)
+[node name="entrance platform" type="CSGBox3D" parent="DungeonGenerator3D/DungeonRoom3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.75, 0.5027237)
 use_collision = true
-size = Vector3(6, 0.5, 27.665)
+size = Vector3(6, 0.5, 11.334454)
 
-[node name="DOOR" type="Node3D" parent="DungeonGenerator3D/DungeonRoom3D"]
+[node name="door" parent="DungeonGenerator3D/DungeonRoom3D" instance=ExtResource("7_udry3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48999977, -1.5, -4.9972763)
+
+[node name="DOOR_ENTRANCE" type="Node3D" parent="DungeonGenerator3D/DungeonRoom3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.9885178)
 
+[node name="entrance wall" type="CSGBox3D" parent="DungeonGenerator3D/DungeonRoom3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.9972763)
+size = Vector3(10, 10, 0.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="DungeonGenerator3D/DungeonRoom3D/entrance wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+operation = 2
+size = Vector3(4, 6, 1)
+
 [node name="World" parent="." instance=ExtResource("5_y8oqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.283909, 0.52573776, 82.98627)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.984272, 0.324543, 65.253685)

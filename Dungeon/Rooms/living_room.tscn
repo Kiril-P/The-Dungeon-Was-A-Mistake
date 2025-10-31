@@ -8,6 +8,7 @@ albedo_color = Color(0, 0, 0, 1)
 [node name="LivingRoom" type="Node3D"]
 script = ExtResource("1_6bpf7")
 size_in_voxels = Vector3i(2, 1, 2)
+min_count = 5
 max_count = 10
 metadata/_custom_type_script = "uid://cho5u58yeku82"
 
