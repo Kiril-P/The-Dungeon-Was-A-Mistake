@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://comqyq5hwvtd0"]
+
+[ext_resource type="Script" uid="uid://mwwyohgvvgw5" path="res://general scripts/campfire.gd" id="1_ccjps"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bla03"]
+albedo_color = Color(0.3585145, 0.22893706, 0.0027127455, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccjps"]
+albedo_color = Color(0.59756047, 0, 0.058536552, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s8gu2"]
+top_radius = 0.1
+height = 1.0
+
+[node name="campfire" type="Node3D"]
+script = ExtResource("1_ccjps")
+on = true
+light_color = Color(0.7397895, 1.9372628e-06, 9.62615e-07, 1)
+
+[node name="campfire_base" type="CSGTorus3D" parent="."]
+material_override = SubResource("StandardMaterial3D_bla03")
+use_collision = true
+
+[node name="fire" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42211485, 0)
+material_override = SubResource("StandardMaterial3D_ccjps")
+transparency = 0.14
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_s8gu2")
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57516825, 0)
+light_color = Color(0.87058824, 0.0627451, 0, 1)
+light_energy = 5.289
+light_indirect_energy = 2.155
+light_volumetric_fog_energy = 1.99
+omni_range = 2.798
+omni_attenuation = 1.411

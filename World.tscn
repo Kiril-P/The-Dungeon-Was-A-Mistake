@@ -1,11 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca4s7pcmac7a1"]
+[gd_scene load_steps=13 format=3 uid="uid://ca4s7pcmac7a1"]
 
+[ext_resource type="PackedScene" uid="uid://comqyq5hwvtd0" path="res://objects/campfire.tscn" id="1_bcbcq"]
 [ext_resource type="Texture2D" uid="uid://dx52ybd3k828" path="res://icon.svg" id="1_c6gwx"]
 [ext_resource type="PackedScene" uid="uid://dwhwlbteewmx6" path="res://player/player.tscn" id="2_2dftf"]
 
+[sub_resource type="Gradient" id="Gradient_bcbcq"]
+offsets = PackedFloat32Array(0, 0.50769234, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.3808974, 0.3426728, 0.22245002, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_js7pq"]
+gradient = SubResource("Gradient_bcbcq")
+
+[sub_resource type="Gradient" id="Gradient_2dftf"]
+offsets = PackedFloat32Array(0, 0.49019608, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.034063093, 0.13350302, 0.29094753, 1, 0.031961273, 0.07179973, 0.3839264, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bcbcq"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_js7pq"]
+noise = SubResource("FastNoiseLite_bcbcq")
+color_ramp = SubResource("Gradient_2dftf")
+seamless = true
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2dftf"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(0.020583345, 0, 0.30195507, 1)
+sky_horizon_color = Color(0.05198007, 0.10112964, 0.31554273, 1)
+sky_cover = SubResource("NoiseTexture2D_js7pq")
+ground_bottom_color = Color(0.03529412, 0, 0.30588236, 1)
+ground_horizon_color = Color(0.050980393, 0.101960786, 0.3137255, 1)
 
 [sub_resource type="Sky" id="Sky_bcbcq"]
 sky_material = SubResource("ProceduralSkyMaterial_2dftf")
@@ -14,7 +37,23 @@ sky_material = SubResource("ProceduralSkyMaterial_2dftf")
 background_mode = 2
 sky = SubResource("Sky_bcbcq")
 tonemap_mode = 2
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
 glow_enabled = true
+glow_bloom = 0.16
+glow_blend_mode = 1
+fog_light_color = Color(0.14017183, 0.15623155, 0.18122098, 1)
+fog_density = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.015
+volumetric_fog_gi_inject = 0.94
+volumetric_fog_anisotropy = 0.55
+volumetric_fog_ambient_inject = 1.47
+volumetric_fog_sky_affect = 0.02
+volumetric_fog_temporal_reprojection_enabled = false
+adjustment_enabled = true
+adjustment_brightness = 0.85
+adjustment_color_correction = SubResource("GradientTexture1D_js7pq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js7pq"]
 albedo_texture = ExtResource("1_c6gwx")
@@ -35,4 +74,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.7775514, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 5.3747616, 0)
+visible = false
 shadow_enabled = true
+
+[node name="campfire" parent="." instance=ExtResource("1_bcbcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.041067, 0.62140155, 0)
