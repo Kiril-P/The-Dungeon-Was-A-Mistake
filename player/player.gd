@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 # === CONFIGURABLE CONSTANTS ===
-const BASE_SPEED: float = 5.0
-const AIR_SPEED: float = 3.5          # Base air control
-const CROUCH_AIR_SPEED: float = 2.0   # Slower air when crouched
+const BASE_SPEED: float = 10.0
+const AIR_SPEED: float = 3.5    
+const CROUCH_AIR_SPEED: float = 2.0   
 const SPRINT_MULTIPLIER: float = 2.0
 const CROUCH_SPEED: float = 2.5
 const STAND_JUMP_VELOCITY: float = 4.5
