@@ -64,7 +64,40 @@ texture_filter = 0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_js7pq")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="walls" type="Node" parent="."]
+
+[node name="wall" type="CSGBox3D" parent="walls"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 15, -0.34350514, 3.315958, 15.6233635)
+material_override = SubResource("StandardMaterial3D_js7pq")
+use_collision = true
+size = Vector3(2.127832, 5.8809814, 0.2)
+
+[node name="wall2" type="CSGBox3D" parent="walls"]
+transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 15, -0.6917721, 3.315958, -15.780476)
+material_override = SubResource("StandardMaterial3D_js7pq")
+use_collision = true
+size = Vector3(2.1742675, 5.8809814, 0.2)
+
+[node name="wall5" type="CSGBox3D" parent="walls/wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907799, 1.2147522, 0)
+material_override = SubResource("StandardMaterial3D_js7pq")
+operation = 2
+use_collision = true
+size = Vector3(0.32751617, 8.310486, 0.2)
+
+[node name="wall3" type="CSGBox3D" parent="walls"]
+transform = Transform3D(-6.556708e-07, 0, 15, 0, 1, 0, -15, 0, -6.556708e-07, -15.668363, 3.315958, 0.67245364)
+material_override = SubResource("StandardMaterial3D_js7pq")
+use_collision = true
+size = Vector3(2.1818604, 5.8809814, 0.2)
+
+[node name="wall4" type="CSGBox3D" parent="walls"]
+transform = Transform3D(-6.556708e-07, 0, 15, 0, 1, 0, -15, 0, -6.556708e-07, 14.088862, 3.315958, 0.45272708)
+material_override = SubResource("StandardMaterial3D_js7pq")
+use_collision = true
+size = Vector3(2.1525636, 5.8809814, 0.2)
+
+[node name="ground" type="CSGBox3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_js7pq")
 use_collision = true
@@ -79,4 +112,13 @@ visible = false
 shadow_enabled = true
 
 [node name="campfire" parent="." instance=ExtResource("1_bcbcq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.041067, 0.62140155, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.216964, 0.62140155, -12.700281)
+
+[node name="campfire2" parent="." instance=ExtResource("1_bcbcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.687792, 0.62140155, -12.700281)
+
+[node name="campfire3" parent="." instance=ExtResource("1_bcbcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.965452, 0.62140155, 10.694338)
+
+[node name="campfire4" parent="." instance=ExtResource("1_bcbcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.098159, 0.62140155, 10.245758)
