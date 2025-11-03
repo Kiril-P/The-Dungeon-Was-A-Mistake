@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://ca4s7pcmac7a1"]
 
 [ext_resource type="PackedScene" uid="uid://comqyq5hwvtd0" path="res://objects/campfire.tscn" id="1_bcbcq"]
-[ext_resource type="Texture2D" uid="uid://dx52ybd3k828" path="res://icon.svg" id="1_c6gwx"]
+[ext_resource type="Texture2D" uid="uid://c6yaygwnrqpo2" path="res://textures/grassy_terrain.jpg" id="1_js7pq"]
 [ext_resource type="PackedScene" uid="uid://dwhwlbteewmx6" path="res://player/player.tscn" id="2_2dftf"]
 
 [sub_resource type="Gradient" id="Gradient_bcbcq"]
@@ -52,11 +52,12 @@ volumetric_fog_ambient_inject = 1.47
 volumetric_fog_sky_affect = 0.02
 volumetric_fog_temporal_reprojection_enabled = false
 adjustment_enabled = true
-adjustment_brightness = 0.85
 adjustment_color_correction = SubResource("GradientTexture1D_js7pq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js7pq"]
-albedo_texture = ExtResource("1_c6gwx")
+albedo_texture = ExtResource("1_js7pq")
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 0
 
 [node name="World" type="Node3D"]
 

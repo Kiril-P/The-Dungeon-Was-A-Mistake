@@ -1,16 +1,96 @@
-[gd_scene load_steps=5 format=3 uid="uid://comqyq5hwvtd0"]
+[gd_scene load_steps=19 format=3 uid="uid://comqyq5hwvtd0"]
 
 [ext_resource type="Script" uid="uid://mwwyohgvvgw5" path="res://general scripts/campfire.gd" id="1_ccjps"]
+[ext_resource type="Texture2D" uid="uid://db44ajf3ofmi7" path="res://textures/bark.png" id="2_s8gu2"]
+[ext_resource type="Texture2D" uid="uid://llntwijcl30t" path="res://textures/fire_01.png" id="3_ebp4h"]
+[ext_resource type="Texture2D" uid="uid://dm526gwpcd0l4" path="res://textures/smoke_01.png" id="4_xg8r2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bla03"]
 albedo_color = Color(0.3585145, 0.22893706, 0.0027127455, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccjps"]
-albedo_color = Color(0.59756047, 0, 0.058536552, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1aru"]
+albedo_texture = ExtResource("2_s8gu2")
+uv1_scale = Vector3(1.2, 1.2, 1.2)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_s8gu2"]
-top_radius = 0.1
-height = 1.0
+[sub_resource type="Gradient" id="Gradient_04omx"]
+offsets = PackedFloat32Array(0, 0.6226415)
+colors = PackedColorArray(0.9490196, 1, 0, 1, 0.95445794, 3.6098063e-06, 1.347661e-06, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4yimn"]
+gradient = SubResource("Gradient_04omx")
+
+[sub_resource type="Curve" id="Curve_roo7m"]
+_data = [Vector2(0.011278182, 0), 0.0, 0.0, 0, 0, Vector2(0.31954888, 1), 0.0, 0.0, 0, 0, Vector2(0.9962407, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_i0tgm"]
+curve = SubResource("Curve_roo7m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_trtj2"]
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.99999774
+linear_accel_max = 0.99999774
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_i0tgm")
+color_ramp = SubResource("GradientTexture1D_4yimn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jm4sh"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_ebp4h")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_h6u24"]
+material = SubResource("StandardMaterial3D_jm4sh")
+
+[sub_resource type="Gradient" id="Gradient_cf11h"]
+offsets = PackedFloat32Array(0, 0.39150944, 0.6792453, 1)
+colors = PackedColorArray(0.99215686, 0.99215686, 0.99215686, 0, 0.9944172, 0.9944172, 0.9944172, 0.32775056, 0.99607843, 0.99607843, 0.99607843, 0.5686275, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s5acx"]
+gradient = SubResource("Gradient_cf11h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cycvl"]
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.99999774
+linear_accel_max = 0.99999774
+scale_min = 2.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_s5acx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5niws"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_xg8r2")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_bx55s"]
+material = SubResource("StandardMaterial3D_5niws")
 
 [node name="campfire" type="Node3D"]
 script = ExtResource("1_ccjps")
@@ -21,18 +101,30 @@ light_color = Color(0.7397895, 1.9372628e-06, 9.62615e-07, 1)
 material_override = SubResource("StandardMaterial3D_bla03")
 use_collision = true
 
-[node name="fire" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42211485, 0)
-material_override = SubResource("StandardMaterial3D_ccjps")
-transparency = 0.14
-cast_shadow = 0
-mesh = SubResource("CylinderMesh_s8gu2")
-
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57516825, 0)
+visible = false
 light_color = Color(0.87058824, 0.0627451, 0, 1)
 light_energy = 5.289
 light_indirect_energy = 2.155
 light_volumetric_fog_energy = 1.99
 omni_range = 2.798
 omni_attenuation = 1.411
+
+[node name="campfire_base2" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="campfire_base2"]
+visible = false
+material_override = SubResource("StandardMaterial3D_a1aru")
+
+[node name="flames" type="GPUParticles3D" parent="."]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_trtj2")
+draw_pass_1 = SubResource("QuadMesh_h6u24")
+
+[node name="smoke" type="GPUParticles3D" parent="."]
+amount = 16
+lifetime = 2.0
+speed_scale = 0.66
+process_material = SubResource("ParticleProcessMaterial_cycvl")
+draw_pass_1 = SubResource("QuadMesh_bx55s")

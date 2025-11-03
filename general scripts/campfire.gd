@@ -6,9 +6,11 @@ extends Node3D
 func _ready() -> void:
 	$Light.light_color = light_color
 	$Light.visible = on
-	$fire.visible = on
+	$flames.visible = on
+	$smoke.visible = on
 
 func toggle_light():
 	on = !on
 	$Light.visible = on
-	$fire.visible = on
+	$flames.visible = on
+	$smoke.visible = on
