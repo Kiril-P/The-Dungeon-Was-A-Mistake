@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c7mvgdfllpdmn"]
+
+[node name="Controls" type="CanvasLayer"]
+
+[node name="bg" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 141.0
+offset_bottom = 50.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Controls"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_top = 48.0
+offset_right = 203.0
+offset_bottom = 199.0
+theme_override_font_sizes/normal_font_size = 20
+text = "[WASD] Movement
+[E] Interact
+[Ctrl] Crouch
+[F] Flashlight
+[Esc] Pause"
+
+[node name="exit_button" type="Button" parent="."]
+offset_left = 595.0
+offset_top = 8.0
+offset_right = 623.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 15
+text = "X"

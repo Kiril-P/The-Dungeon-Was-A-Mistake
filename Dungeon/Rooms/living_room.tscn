@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3boaybsjvlyw"]
+[gd_scene load_steps=4 format=3 uid="uid://b3boaybsjvlyw"]
 
 [ext_resource type="Script" uid="uid://cho5u58yeku82" path="res://addons/SimpleDungeons/DungeonRoom3D.gd" id="1_6bpf7"]
+[ext_resource type="PackedScene" uid="uid://comqyq5hwvtd0" path="res://objects/campfire.tscn" id="2_v4myk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bpf7"]
 albedo_color = Color(0, 0, 0, 1)
@@ -60,3 +61,6 @@ size = Vector3(1, 7, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, -5)
 operation = 2
 size = Vector3(1, 7, 4)
+
+[node name="campfire" parent="." instance=ExtResource("2_v4myk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4768558, 0)

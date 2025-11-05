@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq6k2v7kv4p36"]
+[gd_scene load_steps=8 format=3 uid="uid://bq6k2v7kv4p36"]
 
 [ext_resource type="Script" uid="uid://cho5u58yeku82" path="res://addons/SimpleDungeons/DungeonRoom3D.gd" id="1_jfi38"]
+[ext_resource type="Texture2D" uid="uid://cv14lyenwm1qd" path="res://textures/brick/cobblestone_floor_01_diff_1k (2).jpg" id="2_lb2ct"]
+[ext_resource type="Texture2D" uid="uid://d227vomfhfllu" path="res://textures/brick/sandstone_brick_wall_01_diff_1k.png" id="3_lb2ct"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lb2ct"]
+albedo_texture = ExtResource("2_lb2ct")
+texture_filter = 0
 
 [sub_resource type="GDScript" id="GDScript_jfi38"]
 script/source = "extends Node
@@ -14,12 +20,21 @@ func remove_unused_doors():
 			door.door_node.queue_free()
 "
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xgjc"]
+albedo_texture = ExtResource("2_lb2ct")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtar5"]
+albedo_texture = ExtResource("3_lb2ct")
+texture_filter = 0
+
 [node name="Corridor" type="Node3D"]
 script = ExtResource("1_jfi38")
 max_count = 20
 metadata/_custom_type_script = "uid://cho5u58yeku82"
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_lb2ct")
 use_collision = true
 size = Vector3(10, 10, 10)
 
@@ -49,3 +64,27 @@ size = Vector3(1, 9, 9)
 
 [node name="RemoveUnusedDoors" type="Node" parent="."]
 script = SubResource("GDScript_jfi38")
+
+[node name="FLOOR" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.75, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_0xgjc")
+size = Vector3(10, 0.5, 10)
+
+[node name="WALL" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -4.75)
+visible = false
+material_override = SubResource("StandardMaterial3D_dtar5")
+size = Vector3(10, 9.5, 0.5)
+
+[node name="WALL2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 4.75)
+visible = false
+material_override = SubResource("StandardMaterial3D_dtar5")
+size = Vector3(10, 9.5, 0.5)
+
+[node name="WALL3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0.25, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_dtar5")
+size = Vector3(0.5, 9.5, 10)

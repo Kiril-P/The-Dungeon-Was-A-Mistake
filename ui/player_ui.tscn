@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceblae3dnlkir"]
+[gd_scene load_steps=6 format=3 uid="uid://ceblae3dnlkir"]
 
 [ext_resource type="Texture2D" uid="uid://cgb0kcmeg45kg" path="res://ui/crosshair.png" id="1_cfom6"]
 [ext_resource type="Script" uid="uid://brvxdjxjeux5n" path="res://general scripts/player_ui.gd" id="1_ehg4m"]
 [ext_resource type="PackedScene" uid="uid://bfhy6unhth1ns" path="res://ui/pause_menu.tscn" id="3_iwa1g"]
+[ext_resource type="PackedScene" uid="uid://b0oy4fyduqe63" path="res://ui/settings.tscn" id="4_iwa1g"]
+[ext_resource type="PackedScene" uid="uid://c7mvgdfllpdmn" path="res://ui/controls.tscn" id="5_lp0io"]
 
 [node name="player_ui" type="Control"]
 process_mode = 3
@@ -37,7 +39,17 @@ texture = ExtResource("1_cfom6")
 
 [node name="pause_menu" parent="." instance=ExtResource("3_iwa1g")]
 
+[node name="Settings" parent="." instance=ExtResource("4_iwa1g")]
+
+[node name="Controls" parent="." instance=ExtResource("5_lp0io")]
+
 [connection signal="pressed" from="pause_menu/VBoxContainer/resume" to="." method="resume_game"]
+[connection signal="pressed" from="pause_menu/VBoxContainer/settings" to="." method="open_settings"]
+[connection signal="pressed" from="pause_menu/VBoxContainer/controls" to="." method="open_controls"]
 [connection signal="pressed" from="pause_menu/VBoxContainer/quit_game" to="." method="quit_game"]
+[connection signal="pressed" from="Settings/exit_button" to="." method="close_settings"]
+[connection signal="pressed" from="Controls/exit_button" to="." method="close_settings"]
 
 [editable path="pause_menu"]
+[editable path="Settings"]
+[editable path="Controls"]
